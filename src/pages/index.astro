@@ -1,5 +1,5 @@
 ---
-import Header from "../components/Header.astro";
+import PageLayout from "../layouts/PageLayout.astro"
 ---
 
 <html lang="en">
@@ -11,8 +11,7 @@ import Header from "../components/Header.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
-	<body>
-		<Header />
-		<h1>Astro</h1>
-	</body>
+	<PageLayout>
+		<h1>Velkommen til Ømærket</h1>
+		<p>Ømærket er et kvalitetsmærke for økologiske fødevarer i Danmark. Det garanterer, at produkterne er 100% økologiske og opfylder strenge krav til bæredygtighed og dyrevelfærd.</p>
 </html>
