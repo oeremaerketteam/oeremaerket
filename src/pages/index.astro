@@ -1,17 +1,60 @@
 ---
+import "../styles/index.css"
 import PageLayout from "../layouts/PageLayout.astro"
+import HeroCarousel from "../components/HeroCarousel.astro";
+import InfoCard from "../components/InfoCard.astro";
+import DonationCounter from "../components/DonationCounter.astro";
+const cards = [
+  {
+    title: "Vores donationer",
+    text: "Følg med i vores donationer til Den Danske Naturfond",
+    href: "/donationer",
+  },
+  {
+    title: "Vores proces",
+    text: "Hver gang du bruger dit Dankort, donerer vi til Den Danske Naturfond.",
+    href: "/fordele",
+  },
+  {
+    title: "Vores korttyper",
+    text: "Find det Dankort, der passer til dig til klassisk hverdagskort til andre løsninger",
+    href: "/korttyper",
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<PageLayout>
-		<h1>Velkommen til Ømærket</h1>
-		<p>Ømærket er et kvalitetsmærke for økologiske fødevarer i Danmark. Det garanterer, at produkterne er 100% økologiske og opfylder strenge krav til bæredygtighed og dyrevelfærd.</p>
-</html>
+<PageLayout>
+  <HeroCarousel />
+    <section class="info-cards">
+ {cards.map((card) => (
+      <InfoCard {...card} />
+    ))}
+  </section>
+  <DonationCounter />
+ <section class="green-card-section">
+  <div class="green-card-wrapper">
+    <img
+      class="green-card-img"
+      src="/imgs/dankortGreen.webp"
+      alt="Dankort Green"
+    />
+
+    <div class="green-card-overlay"></div>
+  </div>
+
+  <div class="green-card-content">
+    <h2>Har du hørt om Dankort Green?</h2>
+
+    <p>
+      Dankort Green er et bæredygtigt betalingskort lavet af 100%
+      genbrugsmateriale. Med kortet doneres der automatisk 5% mere til grønne
+      initiativer.
+    </p>
+
+    <a href="/korttyper" class="green-card-link">
+      Læs mere om vores korttyper her
+    </a>
+  </div>
+</section>
+</PageLayout>
+
