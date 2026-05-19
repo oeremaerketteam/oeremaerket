@@ -41,14 +41,15 @@ button?.addEventListener("click", () => {
 });
 </script>
 <style>
-  .site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 1.5rem;
-    background-color: #f5f5f5;
-    position: relative;
-  }
+ .site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background-color: #f5f5f5;
+  position: relative;
+  z-index: 1000;
+}
 
   .logo img {
     width: 70px;
@@ -105,19 +106,40 @@ button?.addEventListener("click", () => {
   top: 50%;
   transform: translateY(-50%) rotate(-45deg);
 }
-  .main-nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #E21E26;
-    padding: 1rem 1.5rem;
-  }
+.main-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
 
-  .main-nav.is-open {
-    display: block;
-  }
+  width: 100%;
+
+  background-color: #e21e26;
+
+  padding: 0 1.5rem;
+
+  max-height: 0;
+  overflow: hidden;
+
+  opacity: 0;
+
+  transform: translateY(-10px);
+
+  transition:
+    max-height 0.5s ease,
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    padding 0.35s ease;
+
+  z-index: 1001;
+}
+
+ .main-nav.is-open {
+  max-height: 400px;
+  opacity: 1;
+  transform: translateY(0);
+
+  padding: 1rem 1.5rem;
+}
 
   .main-nav ul {
     list-style: none;

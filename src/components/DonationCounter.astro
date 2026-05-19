@@ -1,0 +1,197 @@
+<section class="donation-counter">
+  <div class="counter-header">
+    <span class="dot"></span>
+    <p class="year" data-year>2026</p>
+  </div>
+
+  <span class="subtitle">Estimeret donation indtil videre</span>
+
+  <strong class="main-counter" data-counter>0</strong>
+
+  <div class="counter-cards">
+    <article>
+      <p>Det svarer til</p>
+      <strong data-nature-area>0 m2</strong>
+      <p>naturområde</p>
+    </article>
+
+    <article>
+      <p>Eller ca. størrelsen på</p>
+      <strong data-football-fields>0</strong>
+      <p>fodboldbaner</p>
+    </article>
+
+    <article>
+      <p>Eller</p>
+      <strong data-tents>0</strong>
+      <p>4-personers telte</p>
+    </article>
+  </div>
+</section>
+
+<script>
+  import { supabase } from "../lib/supabase.js";
+
+  const counter = document.querySelector("[data-counter]") as HTMLElement | null;
+  const yearEl = document.querySelector("[data-year]") as HTMLElement | null;
+  const natureAreaEl = document.querySelector("[data-nature-area]") as HTMLElement | null;
+  const footballFieldsEl = document.querySelector("[data-football-fields]") as HTMLElement | null;
+  const tentsEl = document.querySelector("[data-tents]") as HTMLElement | null;
+
+  if (!counter || !yearEl || !natureAreaEl || !footballFieldsEl || !tentsEl) {
+    throw new Error("Counter elements not found");
+  }
+
+  const counterEl = counter;
+  const yearElement = yearEl;
+  const natureArea = natureAreaEl;
+  const footballFields = footballFieldsEl;
+  const tents = tentsEl;
+
+  function startLiveCounter(
+    baseAmount: number,
+    amountPerSecond: number,
+    startedAt: string
+  ) {
+    const startTime = new Date(startedAt).getTime();
+
+    function update() {
+      const now = Date.now();
+      const secondsPassed = (now - startTime) / 1000;
+      const liveAmount = baseAmount + secondsPassed * amountPerSecond;
+
+      counterEl.textContent = Math.floor(liveAmount).toLocaleString("da-DK");
+
+      natureArea.textContent =
+        `${Math.floor(liveAmount / 5000).toLocaleString("da-DK")} m2`;
+
+      footballFields.textContent =
+        Math.floor(liveAmount / 40000000).toLocaleString("da-DK");
+
+      tents.textContent =
+        Math.floor(liveAmount / 20000).toLocaleString("da-DK");
+
+      requestAnimationFrame(update);
+    }
+
+    update();
+  }
+
+  async function loadDonation() {
+    const { data, error } = await supabase
+      .from("donation_counter")
+      .select(`
+        base_amount_dkk,
+        amount_per_second,
+        started_at,
+        year
+      `)
+      .eq("id", 1)
+      .single();
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    yearElement.textContent = String(data.year);
+
+    startLiveCounter(
+      Number(data.base_amount_dkk),
+      Number(data.amount_per_second),
+      data.started_at
+    );
+  }
+
+  loadDonation();
+
+  supabase
+    .channel("donation-counter")
+    .on(
+      "postgres_changes",
+      {
+        event: "UPDATE",
+        schema: "public",
+        table: "donation_counter",
+        filter: "id=eq.1",
+      },
+      (payload) => {
+        yearElement.textContent = String(payload.new.year);
+
+        startLiveCounter(
+          Number(payload.new.base_amount_dkk),
+          Number(payload.new.amount_per_second),
+          payload.new.started_at
+        );
+      }
+    )
+    .subscribe();
+</script>
+
+<style>
+  .donation-counter {
+    background: #e21e26;
+    color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+  }
+
+  .counter-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .dot {
+    width: 22px;
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+  }
+
+  .year {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .subtitle {
+    display: block;
+    margin-left: 2.7rem;
+    text-decoration: underline;
+    font-size: 1rem;
+  }
+
+  .main-counter {
+    display: block;
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 2.6rem;
+    font-weight: 800;
+  }
+
+  .counter-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .counter-cards article {
+    background: #ebebeb;
+    color: #111;
+    border-radius: 12px;
+    padding: 0.75rem 0.5rem;
+    min-height: 96px;
+  }
+
+  .counter-cards article strong {
+    display: block;
+    color: #5bd260;
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 0.35rem 0;
+  }
+
+  .counter-cards article p {
+    font-size: 0.8rem;
+  }
+</style>

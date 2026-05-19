@@ -1,0 +1,62 @@
+---
+const {title, text, href} = Astro.props;
+---
+<a class="info-card" href={href}>
+    <div>
+    <h2>{title}</h2>
+    <p>{text}</p>
+    </div>
+</a>
+<style>
+.info-card {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+
+  background: #ebebeb;
+  padding: 1rem;
+  color: black;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: color 0.35s ease, transform 0.35s ease;
+}
+.info-card h2 {
+  font-size: 1.25rem;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  color: #e21e26;
+}
+
+.info-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #e21e26;
+  transform: translateX(-101%);
+  transition: transform 0.45s ease;
+  z-index: 0;
+}
+
+.info-card:hover::before {
+  transform: translateX(0);
+}
+
+.info-card:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.info-card > * {
+  position: relative;
+  z-index: 1;
+}
+.info-card:hover h2,
+.info-card:hover p {
+  color: white;
+}
+
+</style>
