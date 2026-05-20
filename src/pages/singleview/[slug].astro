@@ -1,0 +1,151 @@
+---
+export const prerender = false;
+
+import PageLayout from "../../layouts/PageLayout.astro";
+import { supabase } from "../../lib/supabase.js";
+
+const { slug } = Astro.params;
+
+const { data: donation, error } = await supabase
+  .from("donation_cases")
+  .select("*")
+  .eq("slug", slug)
+  .single();
+
+if (error || !donation) {
+  return Astro.redirect("/donationer");
+}
+---
+
+<PageLayout>
+  <article class="single-donation">
+    <div class="single-hero">
+      <img src={donation.image_url} alt={donation.title} />
+
+      <h1>{donation.title}</h1>
+    </div>
+
+    <div class="single-content">
+      <h2>Oplev {donation.title}</h2>
+
+      <p>{donation.body}</p>
+
+      <a href="https://naturfonden.dk/oplev-naturen/" target="_blank" rel="noopener noreferrer">
+        <span>Læs mere</span>
+      </a>
+    </div>
+  </article>
+</PageLayout>
+
+<style>
+  .single-donation {
+    padding-bottom: 3rem;
+  }
+
+  .single-hero {
+    position: relative;
+    margin: 1rem;
+    height: 240px;
+    overflow: hidden;
+
+    box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+  }
+
+  .single-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .single-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 20%);
+  }
+
+  .single-hero h1 {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+
+    z-index: 2;
+
+    color: white;
+
+    font-size: 3rem;
+    line-height: 0.95;
+    font-weight: 900;
+  }
+
+  .single-content {
+    padding: 0 1rem;
+  }
+
+  .single-content h2 {
+    color: #e21e26;
+
+    font-size: 2.5rem;
+    line-height: 0.95;
+
+    margin-bottom: 1rem;
+  }
+
+  .single-content p {
+    font-size: 1.1rem;
+    line-height: 1.35;
+
+    margin-bottom: 2rem;
+  }
+
+  .single-content a {
+    position: relative;
+    overflow: hidden;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.85rem 1.3rem;
+
+    background: #e21e26;
+    color: white;
+
+    text-decoration: none;
+    font-weight: 800;
+
+    box-shadow: 0 4px 12px rgb(226 30 38 / 30%);
+
+    transition:
+      transform 0.35s ease,
+      color 0.35s ease;
+  }
+
+  .single-content a::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: white;
+
+    transform: translateX(-101%);
+    transition: transform 0.45s ease;
+
+    z-index: 0;
+  }
+
+  .single-content a span {
+    position: relative;
+    z-index: 1;
+  }
+
+  .single-content a:hover::before {
+    transform: translateX(0);
+  }
+
+  .single-content a:hover {
+    color: #e21e26;
+    transform: translateY(-2px);
+  }
+</style>

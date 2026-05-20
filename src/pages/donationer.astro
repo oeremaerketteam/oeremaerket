@@ -1,0 +1,47 @@
+---
+import "../styles/donationer.css"
+import PageLayout from "../layouts/PageLayout.astro";
+import DonationCounter from "../components/DonationCounter.astro";
+import DonationCarousel from "../components/DonationCarousel.astro";
+---
+<PageLayout>
+    <DonationCounter />
+<section class="donation-info">
+  <div
+    class="donation-info-hero"
+    style='background-image: url("/imgs/donationer.webp")'
+  >
+    <div class="overlay"></div>
+
+    <div class="donation-info-content">
+      <h1>
+        Dankort samarbejder med Den Danske Naturfond om at give vores natur i
+        Danmark mere plads
+      </h1>
+
+      <a href="https://naturfonden.dk/" target="_blank" rel="noopener noreferrer">
+        <span>Se hvordan de arbejder</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="donation-stats">
+    <article>
+      <strong>107</strong>
+      <p>Naturområder</p>
+    </article>
+
+    <article>
+      <strong>20.907</strong>
+      <p>Støtter naturen</p>
+    </article>
+
+    <article>
+      <strong>2.570</strong>
+      <p>Truede og sjældne arter</p>
+    </article>
+  </div>
+</section>
+    <DonationCarousel />
+    </PageLayout>
+ 
