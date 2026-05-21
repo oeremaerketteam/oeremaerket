@@ -1,0 +1,133 @@
+main {
+  max-width: 390px;
+  margin: 0 auto;
+  background: white;
+}
+
+.donation-counter {
+  margin: 0 1rem 1rem;
+}
+
+.donation-info {
+  padding: 0 1rem;
+}
+
+.donation-info-hero {
+  position: relative;
+  min-height: 260px;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 35%);
+}
+
+.donation-info-content {
+  position: relative;
+  z-index: 2;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  color: white;
+}
+
+.donation-info-content h1 {
+  font-size: 1.7rem;
+  line-height: 1.05;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+.donation-info-content a {
+  position: relative;
+  overflow: hidden;
+
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+  color: #e21e26;
+
+  padding: 0.6rem 0.8rem;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  text-decoration: underline;
+
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.donation-info-content a::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: #e21e26;
+
+  transform: translateX(-101%);
+  transition: transform 0.45s ease;
+
+  z-index: 0;
+}
+
+.donation-info-content a span {
+  position: relative;
+  z-index: 1;
+}
+
+.donation-info-content a:hover::before {
+  transform: translateX(0);
+}
+
+.donation-info-content a:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.donation-stats {
+  margin: 1rem 0;
+  padding: 1.5rem 1rem;
+  background: #ebebeb;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
+}
+
+.donation-stats article {
+  margin-bottom: 1rem;
+}
+
+.donation-stats article:nth-child(2) {
+  text-align: right;
+}
+
+.donation-stats article:last-child {
+  margin-bottom: 0;
+}
+
+.donation-stats strong {
+  display: block;
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.donation-stats p {
+  font-size: 1.25rem;
+}
+
+.donation-carousel {
+  margin: 0 1rem 2rem;
+}

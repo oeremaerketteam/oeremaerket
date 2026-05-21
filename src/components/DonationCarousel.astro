@@ -1,0 +1,163 @@
+---
+import { supabase } from "../lib/supabase.js";
+
+const { data: slides, error } = await supabase
+  .from("donation_cases")
+  .select("title, excerpt, image_url, slug")
+  .eq("is_active", true)
+  .order("sort_order", { ascending: true });
+
+if (error) {
+  console.error(error);
+}
+---
+
+<section class="donation-carousel" aria-label="Donation cases">
+  {slides?.map((slide, index) => (
+    <article class={`donation-slide ${index === 0 ? "is-active" : ""}`}>
+      <img src={slide.image_url} alt={slide.title} />
+
+      <div class="donation-slide-content">
+        <h2>{slide.title}</h2>
+        <p>{slide.excerpt}</p>
+
+        <a href={`/singleview/${slide.slug}`}>
+          <span>Læs mere</span>
+        </a>
+      </div>
+    </article>
+  ))}
+</section>
+
+<script>
+  const slides = document.querySelectorAll(".donation-slide");
+
+  let currentSlide = 0;
+ 
+
+  function showSlide(index: number) {
+    slides.forEach((slide) => {
+      slide.classList.remove("is-active");
+    });
+
+    slides[index].classList.add("is-active");
+  }
+
+  setInterval(() => {
+    {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+  }, 4000);
+
+
+</script>
+<style>
+  .donation-carousel {
+    position: relative;
+    height: 260px;
+    margin: 1rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+  }
+
+  .donation-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+
+  .donation-slide.is-active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .donation-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .donation-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 35%);
+  }
+
+  .donation-slide-content {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 2;
+    color: white;
+  }
+
+  .donation-slide-content h2 {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .donation-slide-content p {
+    font-size: 0.85rem;
+    margin: 0.4rem 0 0.7rem;
+  }
+
+.donation-slide-content a {
+  position: relative;
+  overflow: hidden;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+  color: #e21e26;
+
+  padding: 0.55rem 0.9rem;
+
+  font-weight: 800;
+  text-decoration: none;
+
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.donation-slide-content a::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: #e21e26;
+
+  transform: translateX(-101%);
+  transition: transform 0.45s ease;
+
+  z-index: 0;
+}
+
+.donation-slide-content a span {
+  position: relative;
+  z-index: 1;
+}
+
+.donation-slide-content a:hover::before {
+  transform: translateX(0);
+}
+
+.donation-slide-content a:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+  .carousel-toggle {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 3;
+  }
+</style>
