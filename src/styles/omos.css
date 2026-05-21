@@ -1,0 +1,17 @@
+.omoshero {
+  display: flex;
+  place-self: center;
+  height: auto;
+  width: 100%;
+}
+
+@media screen and (width>800px) {
+  .omoshero {
+    max-width: fit-content;
+    place-self: center;
+    display: flex;
+  }
+  .pagealign {
+    align-self: center;
+  }
+}
