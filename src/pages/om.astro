@@ -1,0 +1,30 @@
+---
+import "../styles/general.css";
+import "../styles/omos.css";
+import PageLayout from "../layouts/PageLayout.astro";
+import { Image } from "astro:assets";
+import omos from "./public/imgs/omosdankort.svg";
+import OmOsCard from "../components/OmOsCard.astro";
+import kortbetaling from "./public/imgs/kortbetaling.png";
+import gammelbetaling from "./public/imgs/gammelbetaling.png";
+---
+
+<PageLayout>
+  <section class="pagealign">
+    <Image src={omos} class="omoshero" alt="skov med dankort logo i midden" />
+
+    <OmOsCard
+      plakat={gammelbetaling}
+      order="-1"
+      title="Historien om Dankort"
+      text="Dankort blev lanceret i 1983 og med lanceringen fik danskerne et alternativ til kontanter, check og udenlandske kort. I 2015 blev det muligt at betale kontaktløst med Dankort, hvilket har gjort betalinger både hurtigere og mere sikre. De kontaktløse betalinger blev taget hurtigere imod i Danmark end noget andet sted i verden og nu er mere end 80 % af alle transaktioner med Dankort kontaktløse. 
+I 2022 blev det muligt at tilføje Dankort til Apple Pay og på den måde bruge iPhone eller Apple Watch som alternativer til det fysiske Dankort."
+    />
+    <OmOsCard
+      plakat={kortbetaling}
+      title="Et sikkert betalingsmiddel"
+      text="De senere års tiltag har øget sikkerheden ved betaling med Dankort. Efter tilføjelsen af chip er der ikke blevet registreret én eneste sag med forfalsket Dankort chip. Indførslen af det kontaktløse Dankort gjorde det desuden sværere for svindlerne at aflure pinkoden i betalingssituationen, da der ikke bruges pinkode ved kontaktløse betalinger.
+Også ved handel på nettet er Dankort et sikkert betalingsmiddel, der kun er blevet mere sikkert efter indførslen af den online sikkerhedsløsning Dankort Secured by Nets, der kræver godkendelse via sms ved betaling. "
+    />
+  </section>
+</PageLayout>
