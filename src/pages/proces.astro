@@ -2,18 +2,19 @@
 import "../styles/proces.css";
 import PageLayout from "../layouts/PageLayout.astro";
 import { Image } from "astro:assets";
-import procesheader from "./public/imgs/proces-header.webp";
-import one from "./public/imgs/1.webp";
-import bip from "./public/imgs/bip.webp";
-import betal from "./public/imgs/betal.webp";
-import bevar from "./public/imgs/bevar.webp";
 import ProcessCard from "../components/ProcessCard.astro";
+
+const procesheader = "/imgs/proces-header.webp";
+const one = "/imgs/1.webp";
+const bip = "/imgs/bip.webp";
+const betal = "/imgs/betal.webp";
+const bevar = "/imgs/bevar.webp";
 ---
 
 <PageLayout title="Proces">
   <main class="proces-page">
     <section class="hero">
-      <Image src={procesheader} alt="Betal med Dankort" />
+      <img src={procesheader} alt="Betal med Dankort" />
       <div class="hero-text">
         <h1>BIP. BETAL. BEVAR</h1>
         <p>Med Bip, Betal, Bevar støtter du ikke kun den danske natur, men også lokale butikker.</p>
@@ -21,7 +22,7 @@ import ProcessCard from "../components/ProcessCard.astro";
     </section>
 
     <section class="steps">
-      <Image src={one} alt="info" class="one-image" />
+      <img src={one} alt="info" class="one-image" width={350} height={80} loading="lazy" />
     </section>
 
     <section class="cards">
