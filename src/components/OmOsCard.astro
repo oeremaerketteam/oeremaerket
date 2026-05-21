@@ -33,6 +33,9 @@ const { title, text, plakat, order } = Astro.props;
     place-self: center;
     margin: 0;
   }
+  h2 {
+    color: #e21e26;
+  }
   @media screen and (width>800px) {
     .grid_plakat {
       display: grid;
@@ -43,7 +46,7 @@ const { title, text, plakat, order } = Astro.props;
       order: var(--order);
     }
     .plakat {
-      width: 450px;
+      width: 550px;
     }
   }
 </style>

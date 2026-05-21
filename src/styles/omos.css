@@ -10,8 +10,6 @@
     max-width: fit-content;
     place-self: center;
     display: flex;
-  }
-  .pagealign {
-    align-self: center;
+    margin-top: 1rem;
   }
 }
