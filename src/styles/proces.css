@@ -126,6 +126,7 @@
   line-height: 1.5;
   color: #222;
   margin-bottom: 1rem;
+  width: 350px;
 }
 
 @media (min-width: 768px) {
