@@ -1,7 +1,7 @@
 	---
 
 const navItems = [
-  { name: "Forside", href: "/index" },
+  { name: "Forside", href: "/" },
   { name: "Donationer", href: "/donationer" },
   { name: "Proces", href: "/proces" },
   { name: "Korttyper", href: "/korttyper" },
@@ -158,26 +158,106 @@ button?.addEventListener("click", () => {
     font-size: 1.5rem;
   }
 
-  @media (min-width: 768px) {
-    .menu-toggle {
-      display: none;
-    }
-
-    .main-nav {
-      display: block;
-      position: static;
-      width: auto;
-      padding: 0;
-      background: none;
-    }
-
-    .main-nav ul {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .main-nav li {
-      margin-bottom: 0;
-    }
+@media (min-width: 768px) {
+  .site-header {
+    padding: 1rem 2rem;
   }
+
+  .logo img {
+    width: 90px;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .main-nav {
+    display: block;
+
+    position: static;
+
+    width: auto;
+    max-height: unset;
+
+    overflow: visible;
+
+    opacity: 1;
+    transform: none;
+
+    padding: 0;
+
+    background: transparent;
+  }
+
+  .main-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .main-nav li {
+    margin: 0;
+  }
+
+  .main-nav a {
+    position: relative;
+    overflow: hidden;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 120px;
+
+    padding: 0.9rem 1.4rem;
+
+    background: #e21e26;
+    color: white;
+
+    text-decoration: underline;
+
+    font-size: 1.5rem;
+    font-weight: 800;
+
+    box-shadow: 0 4px 10px rgb(226 30 38 / 25%);
+
+    transition:
+      color 0.35s ease,
+      transform 0.35s ease;
+
+    z-index: 1;
+  }
+
+  .main-nav a::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: white;
+
+    transform: translateX(-101%);
+    transition: transform 0.45s ease;
+
+    z-index: -1;
+  }
+
+  .main-nav a span {
+    position: relative;
+    z-index: 2;
+
+    color: inherit;
+
+    transition: color 0.35s ease;
+  }
+
+  .main-nav a:hover::before {
+    transform: translateX(0);
+  }
+
+  .main-nav a:hover {
+    color: #e21e26;
+    transform: translateY(-2px);
+  }
+}
 </style>
