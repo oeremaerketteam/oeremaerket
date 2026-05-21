@@ -1,0 +1,17 @@
+---
+import { Image } from "astro:assets";
+
+const { title, billede, text, reverse = false } = Astro.props;
+---
+
+<article class={`process-card ${reverse ? "reverse" : ""}`}>
+  <Image src={billede} alt={title} class="card-image" />
+
+  <div class="card-content">
+    <h2>{title}</h2>
+
+    <p>{text}</p>
+
+    <a href="#">Se hvordan du gør</a>
+  </div>
+</article>
