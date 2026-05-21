@@ -57,4 +57,43 @@ const cards = [
   </div>
 </section>
 </PageLayout>
+<div class="exam-popup" data-popup>
+  <div class="exam-popup-box">
+    <h2>Bemærk</h2>
+
+    <p>
+       Denne hjemmeside er udviklet som et eksamensprojekt i forbindelse med
+  multimediedesigneruddannelsen og fungerer udelukkende som en konceptuel og
+  læringsbaseret løsning.
+    </p>
+	<p>
+		 Hjemmesiden er ikke officiel og har ingen tilknytning til eller godkendelse
+  fra Dankort eller Den Danske Naturfond.
+	</p>
+
+    <p>
+       Vi gør ikke krav på ejerskab af de anvendte billeder og visuelle materialer.
+  Alt billedmateriale tilhører de respektive rettighedshavere og er hentet fra:
+  naturfonden.dk, dankort.dk, pexels.com samt
+  samvirke.dk/artikler/dankortets-historie.
+    </p>
+
+    <button type="button" data-close-popup>Jeg forstår</button>
+  </div>
+</div>
+<script>
+  const popup = document.querySelector("[data-popup]");
+  const closeButton = document.querySelector("[data-close-popup]");
+
+  const hasSeenPopup = sessionStorage.getItem("examPopupSeen");
+
+  if (hasSeenPopup) {
+    popup?.classList.add("is-hidden");
+  }
+
+  closeButton?.addEventListener("click", () => {
+    popup?.classList.add("is-hidden");
+    sessionStorage.setItem("examPopupSeen", "true");
+  });
+</script>
 

@@ -89,6 +89,50 @@ main {
   color: white;
   transform: translateY(-2px);
 }
+.exam-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: grid;
+  place-items: center;
+
+  padding: 1rem;
+
+  background: rgb(0 0 0 / 55%);
+}
+
+.exam-popup.is-hidden {
+  display: none;
+}
+
+.exam-popup-box {
+  max-width: 420px;
+  background: white;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
+}
+
+.exam-popup-box h2 {
+  color: #e21e26;
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.exam-popup-box p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.exam-popup-box button {
+  background: #e21e26;
+  color: white;
+  border: none;
+  padding: 0.8rem 1rem;
+  font-weight: 800;
+  cursor: pointer;
+}
 @media (min-width: 768px) {
   main {
     max-width: 1100px;
