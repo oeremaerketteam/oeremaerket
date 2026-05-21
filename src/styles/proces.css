@@ -1,7 +1,6 @@
 .proces-page {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  padding: 1rem;
 }
 
 .hero {
@@ -85,17 +84,20 @@
 
   margin-top: 1rem;
   padding: 0.9rem 1.4rem;
+  margin-bottom: 0.8rem;
 
   background: transparent;
   border: 2px solid #e21e26;
-  border-radius: 10px;
 
   color: #e21e26;
   font-size: 0.82rem;
   font-weight: 800;
   text-decoration: none;
-
+  min-height: 44px;
+  padding-block: 0.7rem;
   overflow: hidden;
+  min-width: 44px;
+  min-height: 44px;
 
   transition:
     color 0.45s ease,
@@ -148,6 +150,10 @@
     width: 50%;
   }
   .one-image {
-    width: 450px;
+    width: 700px;
+  }
+  .proces-page {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }

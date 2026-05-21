@@ -5,7 +5,7 @@ const { title, billede, text, reverse = false } = Astro.props;
 ---
 
 <article class={`process-card ${reverse ? "reverse" : ""}`}>
-  <Image src={billede} alt={title} class="card-image" />
+  <img src={billede} alt={title} class="card-image" width="350" height="250" loading="lazy" />
 
   <div class="card-content">
     <h2>{title}</h2>
