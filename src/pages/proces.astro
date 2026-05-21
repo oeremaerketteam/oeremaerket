@@ -1,0 +1,50 @@
+---
+import "../styles/proces.css";
+import PageLayout from "../layouts/PageLayout.astro";
+import { Image } from "astro:assets";
+import procesheader from "./public/imgs/proces-header.webp";
+import one from "./public/imgs/1.webp";
+import bip from "./public/imgs/bip.webp";
+import betal from "./public/imgs/betal.webp";
+import bevar from "./public/imgs/bevar.webp";
+import ProcessCard from "../components/ProcessCard.astro";
+---
+
+<PageLayout title="Proces">
+  <main class="proces-page">
+    <section class="hero">
+      <Image src={procesheader} alt="Betal med Dankort" />
+      <div class="hero-text">
+        <h1>BIP. BETAL. BEVAR</h1>
+        <p>Med Bip, Betal, Bevar støtter du ikke kun den danske natur, men også lokale butikker.</p>
+      </div>
+    </section>
+
+    <section class="steps">
+      <Image src={one} alt="info" class="one-image" />
+    </section>
+
+    <section class="cards">
+      <ProcessCard
+        title="Bip"
+        billede={bip}
+        text="Dankort i Apple pay. Det er muligt for kunder i mere end 40 banker at betale med Dankort i Apple Pay. Også når du betaler med mobilen, er det oftest billigere for butikkerne, når du betaler med Dankort."
+      />
+
+      <ProcessCard
+        title="Betal"
+        billede={betal}
+        text="Når du betaler med Dankort, er du således med til at holde butikkernes omkostninger til betalinger nede.  
+
+Det er ikke kun en fordel for butikkerne i dit lokalområde, men også for dig som forbruger."
+        reverse={true}
+      />
+
+      <ProcessCard
+        title="Bevar"
+        billede={bevar}
+        text="Hver gang du bruger dit Dankort, donerer vi 1 øre til Den Danske Naturfond. Det bliver til mere end 10 millioner kroner hvert år, der går ubeskåret til opkøb og udvikling af mere vild og varig natur i Danmark."
+      />
+    </section>
+  </main>
+</PageLayout>
