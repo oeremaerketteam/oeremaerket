@@ -1,0 +1,26 @@
+---
+const { title, text } = Astro.props;
+---
+
+<section class="cardred">
+  <h2>{title}</h2>
+  <p>{text}</p>
+  <a href="/">Se mere her.</a>
+</section>
+<style>
+  .cardred {
+    background-color: #e21e26;
+    gap: 1rem;
+    padding: 2.5rem;
+    margin: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  h2 {
+    color: #ebebeb;
+    padding-bottom: 1rem;
+  }
+  a {
+    color: #ebebeb;
+    padding-top: 1rem;
+  }
+</style>
