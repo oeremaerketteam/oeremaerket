@@ -1,0 +1,9 @@
+@media screen and (width>800px) {
+  .kontaktgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .kontaktmargin {
+    margin: 2.5rem;
+  }
+}

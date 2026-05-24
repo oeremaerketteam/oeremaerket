@@ -1,0 +1,36 @@
+---
+import "../styles/general.css";
+import "../styles/kontakt.css";
+import PageLayout from "../layouts/PageLayout.astro";
+import KontaktCardG from "../components/KontaktCardG.astro";
+import KontaktCardR from "../components/KontaktCardR.astro";
+import KontaktHeader from "../components/KontaktHeader.astro";
+---
+
+<PageLayout>
+  <section class="kontaktmargin">
+    <KontaktHeader />
+    <section class="kontaktgrid">
+      <KontaktCardG
+        title="Kundeservice"
+        text="Har du spørgsmål til oprettelse af en Dankort aftale eller spørgsmål til din eksisterende aftale, er du meget velkommen til at kontakte kundeservice på telefonnr. 
+
+44 89 24 00 
+
+på hverdage mellem 
+kl 8.00 og 17.00."
+      />
+      <KontaktCardR title="Selvbetjening" text="Med din dankortaftale har du adgang til vores selvbetjeningsportal, som giver dig overblik over dine dankort transaktioner og udbetalinger. " />
+      <KontaktCardG title="Opsig Dankort 
+aftale " text="Ønsker du at opsige din Dankort aftale, kan du kontakte os på 
+
+Tlf: 44 89 74 80. 
+
+Vi har telefontid; 
+
+man-tor: 9.00-16.30 
+
+fre: 9.00-16.00." />
+    </section>
+  </section>
+</PageLayout>
