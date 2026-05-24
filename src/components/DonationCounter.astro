@@ -104,28 +104,6 @@
   }
 
   loadDonation();
-
-  supabase
-    .channel("donation-counter")
-    .on(
-      "postgres_changes",
-      {
-        event: "UPDATE",
-        schema: "public",
-        table: "donation_counter",
-        filter: "id=eq.1",
-      },
-      (payload) => {
-        yearElement.textContent = String(payload.new.year);
-
-        startLiveCounter(
-          Number(payload.new.base_amount_dkk),
-          Number(payload.new.amount_per_second),
-          payload.new.started_at
-        );
-      }
-    )
-    .subscribe();
 </script>
 
 <style>
