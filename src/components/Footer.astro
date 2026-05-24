@@ -12,6 +12,7 @@ import "../styles/general.css"
       <nav>
         <ul>
           <li><a href="/donationer">Donationer</a></li>
+          <li><a href="/proces">Proces</a></li>
           <li><a href="/korttyper">Korttyper</a></li>
         </ul>
       </nav>
@@ -30,9 +31,9 @@ import "../styles/general.css"
       <h4>Sociale Medier</h4>
       <nav>
         <ul>
-          <li><a href="">Facebook</a></li>
-          <li><a href="">LinkedIn</a></li>
-          <li><a href="">Instagram</a></li>
+          <li><a href="https://www.facebook.com/dankort.danmark">Facebook</a></li>
+          <li><a href="https://www.linkedin.com/showcase/dankort/?originalSubdomain=dk">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/dankort.danmark/">Instagram</a></li>
         </ul>
       </nav>
     </div>
@@ -41,7 +42,7 @@ import "../styles/general.css"
 
 <style>
   footer {
-    background-color: #f5f5f5;
+    background-color: #e21e26;
   }
   .grid_footer {
     display: flex;
@@ -52,16 +53,27 @@ import "../styles/general.css"
     list-style: none;
   }
   h4 {
-    color: #e21e26;
+    color: #f5f5f5;
     padding-top: 1rem;
   }
   div a {
-    color: #e21e26;
+    color: #f5f5f5;
   }
   .logopic {
     max-width: 60px;
     display: flex;
     place-self: center;
     padding-top: 1rem;
+  }
+  @media (min-width: 768px){
+    .logopic {
+      max-width: 90px;
+    }
+    h4{
+      font-size: 1.5rem;
+    }
+    div a{
+      font-size: 1.2rem;
+    }
   }
 </style>
