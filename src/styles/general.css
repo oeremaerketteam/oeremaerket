@@ -1,15 +1,19 @@
 @font-face {
   font-family: "Raleway";
   src: url("/fonts/Raleway-Italic-VariableFont_wght.ttf") format("truetype");
-  font-weight: 400;
+  font-weight: 100 900;
   font-style: italic;
+  font-display: swap;
+  font-feature-settings: "lnum" 1;
 }
 
 @font-face {
   font-family: "Raleway";
   src: url("/fonts/Raleway-VariableFont_wght.ttf") format("truetype");
-  font-weight: 500;
+  font-weight: 100 900;
   font-style: normal;
+  font-display: swap;
+  font-feature-settings: "lnum" 1;
 }
 * {
   margin: 0;
