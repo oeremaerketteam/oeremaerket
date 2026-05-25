@@ -47,6 +47,8 @@
   width: 100%;
   height: auto;
   gap: 1rem;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+  border-radius: 25px;
 }
 
 .kort-text {
