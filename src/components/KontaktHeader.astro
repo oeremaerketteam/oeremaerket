@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import kontakthead from "./public/imgs/kontaktheader.png";
+---
+
+<div class="headcontainer">
+  <Image src={kontakthead} class="picturekontakt" alt="to hænder" />
+  <div class="headertextkontakt">
+    <h1>Overvejer du at blive kunde?</h1>
+    <h2>Kontakt os hvis du har spørgsmål</h2>
+    <p>Overvejer du at blive kunde og har spørgsmål til vores produkter og services?</p>
+    <p>Eller er du allerede kunde og ønsker at udvide din nuværende løsning?</p>
+    <p>Uanset hvad du har brug for, er vi klar til at hjælpe dig.</p>
+  </div>
+</div>
+
+<style>
+  .headcontainer {
+    position: relative;
+    text-align: center;
+    color: rgb(0, 0, 0);
+  }
+  .headertextkontakt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+  }
+  h1 {
+    color: #e21e26;
+  }
+  .picturekontakt {
+    opacity: 30%;
+    width: 100%;
+    height: auto;
+  }
+</style>
